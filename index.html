@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>Avertisment prietenos :)</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="color-scheme" content="light" />
+    <style>
+      :root {
+        --bg: #fff6f6;
+        --bg-accent: radial-gradient(
+          circle at 30% 20%,
+          #ffe2e2 0%,
+          #fff6f6 55%,
+          #fff6f6 100%
+        );
+        --surface: #ffffff;
+        --surface-alt: #ffecec;
+        --text: #2e1b1b;
+        --text-soft: #5a3a3a;
+        --accent: #dc2626; /* red-600 */
+        --accent-rgb: 220, 38, 38;
+        --accent-soft: #fca5a5;
+        --focus-ring: 0 0 0 3px rgba(var(--accent-rgb), 0.25);
+        --radius: 18px;
+        --radius-sm: 10px;
+        --shadow-sm: 0 2px 4px rgba(220, 38, 38, 0.15);
+        --shadow-md: 0 6px 22px -4px rgba(220, 38, 38, 0.28);
+        --shadow-glow: 0 0 0 1px rgba(220, 38, 38, 0.25),
+          0 4px 18px -4px rgba(220, 38, 38, 0.45);
+        --transition: 0.35s cubic-bezier(0.16, 0.8, 0.3, 1);
+        --warning-grad: linear-gradient(135deg, #dc2626, #ef4444, #dc2626);
+      }
+      * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, sans-serif;
+        background: var(--bg-accent);
+        color: var(--text);
+        line-height: 1.48;
+        display: flex;
+        flex-direction: column;
+        min-height: 100dvh;
+        overflow-x: hidden;
+        --scrollbarBG: #ffe2e2;
+        --thumbBG: #dc2626;
+      }
+      body::-webkit-scrollbar {
+        width: 10px;
+      }
+      body::-webkit-scrollbar-track {
+        background: var(--scrollbarBG);
+      }
+      body::-webkit-scrollbar-thumb {
+        background: var(--thumbBG);
+        border-radius: 6px;
+      }
+      h1 {
+        font-size: clamp(1.58rem, 6.4vw, 2.15rem);
+        line-height: 1.1;
+        margin: 0;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+      h2 {
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+      p {
+        margin: 0 0 1.05rem;
+      }
+
+      .warning-bar {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.65rem 1rem;
+        background: var(--warning-grad);
+        color: #fff;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        box-shadow: var(--shadow-md);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: saturate(180%) blur(4px);
+      }
+      .warning-bar .pulse-dot {
+        width: 14px;
+        height: 14px;
+        background: #fff;
+        border-radius: 50%;
+        position: relative;
+      }
+      .warning-bar .pulse-dot:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: rgba(255, 255, 255, 0.55);
+        animation: pulse 1.8s infinite;
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 0.9;
+        }
+        55% {
+          transform: scale(2.2);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(2.2);
+          opacity: 0;
+        }
+      }
+
+      header {
+        padding: 2.4rem 1.2rem 1.6rem;
+        text-align: center;
+        position: relative;
+      }
+      .hero-icon {
+        width: 96px;
+        height: 96px;
+        margin: 0 auto 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--warning-grad);
+        color: #fff;
+        border-radius: 30px;
+        box-shadow: var(--shadow-glow);
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-icon:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          140deg,
+          rgba(255, 255, 255, 0.18),
+          rgba(255, 255, 255, 0.05)
+        );
+      }
+      .hero-icon svg {
+        width: 54%;
+        height: 54%;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+        animation: iconFloat 5.5s ease-in-out infinite;
+      }
+      @keyframes iconFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+
+      main {
+        flex: 1;
+        padding: 0 1.05rem 2.6rem;
+        max-width: 760px;
+        width: 100%;
+        margin: 0 auto;
+      }
+      .section {
+        background: linear-gradient(160deg, #ffffff, #ffecec 70%);
+        border: 1px solid #f8d2d2;
+        border-radius: 24px;
+        padding: 1.1rem 1.1rem 1.05rem;
+        margin: 0 0 1.1rem;
+        box-shadow: var(--shadow-sm);
+        position: relative;
+        overflow: hidden;
+      }
+      .section:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(
+          circle at 85% 15%,
+          rgba(220, 38, 38, 0.12),
+          transparent 65%
+        );
+      }
+
+      .card-grid {
+        display: grid;
+        gap: 1.05rem;
+        margin-top: 0.4rem;
+      }
+      @media (min-width: 720px) {
+        .card-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid #f8d2d2;
+        border-radius: 22px;
+        padding: 1rem 0.95rem 0.95rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+        isolation: isolate;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+      }
+      .card:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(
+          145deg,
+          rgba(220, 38, 38, 0.08),
+          rgba(220, 38, 38, 0)
+        );
+        opacity: 0;
+        transition: var(--transition);
+      }
+      .card:hover {
+        box-shadow: var(--shadow-glow);
+        transform: translateY(-3px);
+      }
+      .card:hover:before {
+        opacity: 1;
+      }
+      .card h3 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+      }
+      .card p {
+        margin: 0;
+        font-size: 0.82rem;
+        color: var(--text-soft);
+      }
+      .badge {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+        background: rgba(var(--accent-rgb), 0.12);
+        color: var(--accent);
+        padding: 4px 8px;
+        border-radius: 999px;
+        font-weight: 600;
+        width: fit-content;
+      }
+      .btn,
+      .card button {
+        appearance: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 600;
+        background: var(--accent);
+        color: #fff;
+        padding: 0.7rem 0.95rem;
+        border-radius: 14px;
+        width: fit-content;
+        box-shadow: 0 3px 12px rgba(var(--accent-rgb), 0.38);
+        font-size: 0.85rem;
+        letter-spacing: 0.4px;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .btn:after,
+      .card button:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          120deg,
+          rgba(255, 255, 255, 0.25),
+          rgba(255, 255, 255, 0)
+        );
+        mix-blend-mode: overlay;
+        opacity: 0.55;
+        pointer-events: none;
+      }
+      .btn:active,
+      .card button:active {
+        transform: scale(0.96);
+      }
+      .interactive {
+        cursor: pointer;
+      }
+      .interactive:focus-visible {
+        box-shadow: var(--focus-ring);
+      }
+
+      footer {
+        text-align: center;
+        padding: 1.9rem 1rem 1.2rem;
+        font-size: 0.74rem;
+        color: #5a3a3a;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+      }
+
+      .fade-seq {
+        opacity: 0;
+        transform: translateY(26px);
+        transition: var(--transition);
+      }
+      .fade-seq.enter {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .attention-ring {
+        position: absolute;
+        inset: -6px;
+        border-radius: 30px;
+        background: conic-gradient(from 0deg, #dc2626, #ef4444, #dc2626);
+        filter: blur(14px);
+        opacity: 0.35;
+        animation: ringSpin 12s linear infinite;
+        pointer-events: none;
+      }
+      @keyframes ringSpin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Confetti reused */
+      .confetti-piece {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 12px;
+        height: 12px;
+        background: var(--accent);
+        border-radius: 3px;
+        pointer-events: none;
+        z-index: 600;
+        will-change: transform, opacity;
+      }
+      @keyframes confettiFall {
+        0% {
+          transform: translate(var(--xStart), -40px) rotate(0deg);
+          opacity: 0;
+        }
+        8% {
+          opacity: 1;
+        }
+        100% {
+          transform: translate(var(--xEnd), calc(100dvh + 40px))
+            rotate(var(--rot));
+          opacity: 0;
+        }
+      }
+      .thank {
+        animation: bump 0.65s cubic-bezier(0.25, 1.4, 0.35, 1);
+      }
+      @keyframes bump {
+        0% {
+          transform: scale(1);
+        }
+        35% {
+          transform: scale(1.06);
+        }
+        60% {
+          transform: scale(0.97);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @supports (padding: max(0px)) {
+        body {
+          padding-bottom: max(0px, env(safe-area-inset-bottom));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="warning-bar" role="status" aria-live="polite">
+      <span class="pulse-dot" aria-hidden="true"></span> AVERTISMENT PRIETENOS –
+      TE ROG MUTĂ MAȘINA
+    </div>
+    <header class="fade-seq">
+      <div class="hero-icon" aria-hidden="true">
+        <div class="attention-ring" aria-hidden="true"></div>
+        <svg
+          viewBox="0 0 64 64"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="32" cy="32" r="28" stroke="rgba(255,255,255,0.85)" />
+          <path d="M32 18v17" />
+          <circle cx="32" cy="44" r="2" fill="#fff" stroke="#fff" />
+        </svg>
+      </div>
+      <h1>Ai parcat ca un 🐂</h1>
+    </header>
+    <main>
+      <section class="section fade-seq" aria-labelledby="intro-heading">
+        <h2 id="intro-heading" class="visually-hidden">Context</h2>
+        <p>
+          <strong style="color: var(--accent)"
+            >De data asta ai un avertisment.</strong
+          >
+          Acesta nu este un loc public de parcare. Nici pentru 5 minute. Nici
+          dacă ai întârziat la salon. Nici dacă ți se pare că nu deranjezi.
+        </p>
+      </section>
+      <section class="section fade-seq" aria-labelledby="ce-ai-facut-heading">
+        <h2 id="ce-ai-facut-heading">CE AI FĂCUT?</h2>
+        <p>
+          Ai ocupat un spațiu privat / ai blocat accesul. Asta înseamnă că
+          proprietarul nu își poate folosi liber bunul. Nu e tragedie universală
+          – dar creează disconfort și poate declanșa demersuri mai formale dacă
+          persistă - TRY ME!
+        </p>
+        <p>
+          <em>Respectul</em> pentru proprietatea altuia e mai ieftin decât
+          timpul consumat de toată lumea când trebuie să căutăm șoferul, să
+          facem poze, să sunăm.
+        </p>
+      </section>
+      <section class="section fade-seq" aria-labelledby="ce-faci-acum-heading">
+        <h2 id="ce-faci-acum-heading">CE FACI ACUM?</h2>
+        <p style="margin: 0 0 0.8rem">
+          Cel mai simplu este să muți mașina într-un loc permis chiar acum. Te
+          rog să nu revii aici fără drept — e o promisiune ușoară care previne
+          orice neplăceri viitoare. După ce ai mutat masina, nu rămâne niciun
+          stres și nicio discuție de continuat. Fiecare își vede de zi,
+          liniștit. Dacă totuși vrei să îți testezi limitele, data viitoare voi
+          fi mai creativ
+        </p>
+      </section>
+    </main>
+    <footer class="fade-seq" role="contentinfo">
+      <div>O zi bună 🌿</div>
+      <div
+        style="
+          font-size: 0.65rem;
+          line-height: 1.35;
+          text-align: left;
+          margin: 0 auto;
+          max-width: 720px;
+          background: var(--surface-alt);
+          padding: 0.75rem 0.85rem 0.8rem;
+          border: 1px solid #f3b8b8;
+          border-radius: 16px;
+        "
+      >
+        <strong
+          >Trimiteri legale orientative (verifică versiunea
+          actualizată):</strong
+        >
+        <ul
+          style="list-style: disc; padding-left: 1rem; margin: 0.4rem 0 0.35rem"
+        >
+          <li>
+            <b>OUG 195/2002</b> – art. 142–143: oprire / staționare interzisă
+            când blochează accesul.
+          </li>
+          <li>
+            <b>Codul penal (Legea 286/2009)</b> – art. 224: violarea de
+            domiciliu (pătrundere fără drept).
+          </li>
+          <li>
+            <b>Codul civil (Legea 287/2009)</b> – art. 555: protecția dreptului
+            de proprietate și posesie.
+          </li>
+          <li>
+            <b>Codul de procedură civilă</b> – acțiuni posesorii împotriva
+            tulburării de fapt.
+          </li>
+        </ul>
+      </div>
+    </footer>
+    <script>
+      (function () {
+        const style = document.createElement("style");
+        style.textContent =
+          ".visually-hidden{position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important;border:0!important;}";
+        document.head.appendChild(style);
+      })();
+      document.addEventListener("DOMContentLoaded", () => {
+        const seq = [...document.querySelectorAll(".fade-seq")];
+        seq.forEach((el, i) =>
+          setTimeout(() => el.classList.add("enter"), 90 + i * 110)
+        );
+      });
+      function launchConfetti(count = 70, duration = 1700) {
+        const colors = [
+          "#dc2626",
+          "#ef4444",
+          "#f87171",
+          "#fb7185",
+          "#fecaca",
+          "#ffffff",
+        ];
+        const pieces = [];
+        const w = window.innerWidth;
+        for (let i = 0; i < count; i++) {
+          const piece = document.createElement("div");
+          piece.className = "confetti-piece";
+          const startX = Math.random() * w;
+          const endX = startX + (Math.random() * 150 - 75);
+          const rot = Math.random() * 720 - 360 + "deg";
+          piece.style.background = colors[i % colors.length];
+          piece.style.setProperty("--xStart", startX + "px");
+          piece.style.setProperty("--xEnd", endX + "px");
+          piece.style.setProperty("--rot", rot);
+          const fallTime = duration + Math.random() * 1200;
+          piece.style.animation = `confettiFall ${fallTime}ms ease-in forwards`;
+          piece.style.animationDelay = Math.random() * 120 + "ms";
+          document.body.appendChild(piece);
+          pieces.push(piece);
+        }
+        setTimeout(() => pieces.forEach((p) => p.remove()), duration + 2300);
+      }
+      const promiseCard = document.getElementById("promiseCard");
+      let promiseDone = false;
+      function handlePromise() {
+        if (promiseDone) return;
+        promiseDone = true;
+        const title = document.getElementById("promiseTitle");
+        const text = document.getElementById("promiseText");
+        title.textContent = "Mulțumesc! Gest apreciat.";
+        text.textContent = "Ai confirmat – nu mai revii aici. 👌";
+        promiseCard.classList.add("thank");
+        promiseCard.setAttribute("aria-pressed", "true");
+        launchConfetti();
+      }
+      promiseCard.addEventListener("click", handlePromise);
+      promiseCard.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handlePromise();
+        }
+      });
+    </script>
+  </body>
+</html>
